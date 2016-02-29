@@ -3,7 +3,9 @@
   "version": "0.2.0",
   "description": "Beancount syntax support in Atom",
   "keywords": [
-    "beancount"
+    "beancount",
+    "language",
+    "grammar"
   ],
   "repository": "https://github.com/fantasticfears/language-beancount",
   "license": "MIT",
