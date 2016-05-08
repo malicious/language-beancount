@@ -42,10 +42,32 @@ patterns: [
       '2':
         name: 'support.variable.language.option.beancount'
       '3':
-        name: 'support.class.option.beancount'
+        name: 'variable.other.option.beancount'
     comment: 'Option directives'
     match: '^(option)\\s*(\\".*\\")\\s*(\\".*\\")\\s*'
     name: 'meta.directive.option.beancount'
+  }, {
+    captures:
+      '1':
+        name: 'support.function.directive.include.beancount'
+      '2':
+        name: 'variable.other.include.beancount'
+      '3':
+        name: 'support.class.include.beancount'
+    comment: 'Include directives'
+    match: '^(include)\\s*(".*")\\s*'
+    name: 'meta.directive.include.beancount'
+  }, {
+    captures:
+      '1':
+        name: 'support.function.directive.plugin.beancount'
+      '2':
+        name: 'variable.other.plugin.beancount'
+      '3':
+        name: 'support.class.plugin.beancount'
+    comment: 'Plugin directives'
+    match: '^(plugin)\\s*(".*")\\s*'
+    name: 'meta.directive.plugin.beancount'
   }, {
     comment: 'Directives (no date)'
     match: '^(poptag|pushtag)\\s'
@@ -151,6 +173,16 @@ patterns: [
     comment: 'Illegal'
     match: '[^\\s}]'
     name: 'invalid.illegal.unrecognized.beancount'
+  }, {
+    begin: '^\\s{2,}([a-z][A-Za-z0-9\\-_]+):'
+    beginCaptures:
+      '1':
+        name: 'support.other.metadata.key.beancount'
+    comment: 'Metadata'
+    end: '\\s*(.*)$'
+    endCaptures:
+      '1':
+        name: 'variable.other.metadata.value.beancount'
   }
 ]
 repository:

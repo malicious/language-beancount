@@ -1,3 +1,4 @@
-## 0.3.0
+## 0.4.0
 
 - Fix some grammar detections
+- More general syntax support
