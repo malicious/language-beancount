@@ -78,7 +78,9 @@ patterns: [
       '4':
         name: 'support.function.directive.beancount'
     comment: 'Transactions'
-    end: '\\s(".*")\\s(\\|)\\s(".*")|\\s(".*")\\s(".*")|(".*")[\\s]*$|([\\s]*$)'
+    # Links and tags shall be included. But it's hard to do so in regexp.
+    # Those capture at least capture majorities of cases.
+    end: '\\s+(".*")\\s+(\\|)\\s+(".*")\\s*|\\s+(".*")\\s+(".*")\\s*|\\s+(".*")\\s*|\\s*$'
     endCaptures:
       '1':
         name: 'meta.structure.dictionary.payee.beancount'
@@ -128,13 +130,13 @@ patterns: [
   }, {
     captures:
       '2':
-        name: 'string.unquoted.tag.beancount'
+        name: 'entity.name.tag.beancount'
     comment: 'Tags'
     match: '(#)([A-Za-z0-9\\-_/.]+)'
   }, {
     captures:
       '2':
-        name: 'string.unquoted.link.beancount'
+        name: 'entity.other.link.beancount'
     comment: 'Links'
     match: '(\\^)([A-Za-z0-9\\-_/.]+)'
   }, {
