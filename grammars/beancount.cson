@@ -33,7 +33,7 @@ patterns: [
     ]
   }, {
     comment: 'strings'
-    match: '\\\'.*\\\''
+    match: '\\".*\\"'
     name: 'string.quoted.double.beancount'
   }, {
     captures:
@@ -44,7 +44,7 @@ patterns: [
       '3':
         name: 'support.class.option.beancount'
     comment: 'Option directives'
-    match: '^(option)\\s*(\\\'.*\\\')\\s*(\\\'.*\\\')\\s*'
+    match: '^(option)\\s*(\\".*\\")\\s*(\\".*\\")\\s*'
     name: 'meta.directive.option.beancount'
   }, {
     comment: 'Directives (no date)'
@@ -52,7 +52,7 @@ patterns: [
     name: 'keyword.operator.directive.beancount'
   }, {
     comment: 'Currencies'
-    match: '\\s([A-Z][A-Z0-9\\\'\\.\\_\\-]{0,10}[A-Z0-9])[\\,?|\\s]'
+    match: '\\s([A-Z][A-Z0-9\\"\\.\\_\\-]{0,10}[A-Z0-9])[\\,?|\\s]'
     name: 'variable.other.currency.beancount'
   }, {
     captures:
@@ -78,7 +78,7 @@ patterns: [
       '4':
         name: 'support.function.directive.beancount'
     comment: 'Transactions'
-    end: '\\s(\'.*\')\\s(\\|)\\s(\'.*\')|\\s(\'.*\')\\s(\'.*\')|(\'.*\')[\\s]*$|([\\s]*$)'
+    end: '\\s(".*")\\s(\\|)\\s(".*")|\\s(".*")\\s(".*")|(".*")[\\s]*$|([\\s]*$)'
     endCaptures:
       '1':
         name: 'meta.structure.dictionary.payee.beancount'
