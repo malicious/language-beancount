@@ -7,7 +7,8 @@ name: 'Beancount'
 patterns: [
   {
     comment: 'Commented text'
-    match: '[;\*].*'
+    # Match lines/substrings starting with any of ';', '*', '#'
+    match: '[;\*#].*'
     name: 'comment.line.beancount'
   }, {
     captures:
