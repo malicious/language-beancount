@@ -19,7 +19,8 @@ patterns: [
     comment: 'Root Accounts'
     match: '\\s([A-Z][A-Za-z0-9\\-]+)(:)'
   }, {
-    begin: '([:]?)([A-Z][A-Za-z0-9\\-]+)'
+    # Support account names that are only one character long
+    begin: '([:]?)([A-Z][A-Za-z0-9\\-]*)'
     beginCaptures:
       '1':
         name: 'punctuation.separator.beancount'
