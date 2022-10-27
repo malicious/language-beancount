@@ -25,7 +25,8 @@ patterns: [
       '1':
         name: 'punctuation.separator.beancount'
       '2':
-        name: 'variable.account.beancount'
+        # [DNM] Stop highlighting every single account name
+        name: 'meta.structure.dictionary.was-variable.account.beancount'
     comment: 'Accounts'
     end: '([:]?)|(\\s)'
     patterns: [
