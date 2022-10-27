@@ -132,8 +132,10 @@ patterns: [
         name: 'string.quoted.narration.beancount'
     patterns: [
       {
+        # [DNM] Use "illegal" highlighting to mark flagged transactions more clearly
+        # (Flagged postings are already "illegal", since they weren't explicitly added)
         match: '\\!'
-        name: 'keyword.operator.flag.beancount'
+        name: 'invalid.illegal.was-keyword.operator.flag.beancount'
       }, {
         match: '\\*'
         name: 'keyword.operator.mark.beancount'
