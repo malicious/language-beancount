@@ -75,9 +75,21 @@ patterns: [
     match: '^(poptag|pushtag)\\s'
     name: 'keyword.operator.directive.beancount'
   }, {
-    comment: 'Currencies'
+    comment: 'short commodity name (currencies) + comment immediately after'
+    match: '\\s([A-Z][A-Z0-9\\"\\.\\_\\-]{0,10}[A-Z0-9])([;\*#].*)'
+    captures:
+      '1':
+        name: 'variable.other.currency.beancount'
+      '2':
+        name: 'comment.line.beancount'
+  }, {
+    comment: 'short commodity name (currencies)'
     match: '\\s([A-Z][A-Z0-9\\"\\.\\_\\-]{0,10}[A-Z0-9])[\\,?|\\s]'
     name: 'variable.other.currency.beancount'
+  }, {
+    comment: 'longer commodity names (e.g. options specifiers like AMD_220325_C105)'
+    match: '\\s([A-Z][A-Z0-9\\"\\.\\_\\-]{10,20}[A-Z0-9])[\\,?|\\s]'
+    name: 'meta.structure.dictionary.was-variable.other.currency.beancount'
   }, {
     captures:
       '1':
