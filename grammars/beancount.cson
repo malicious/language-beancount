@@ -136,11 +136,40 @@ patterns: [
     match: '\\@'
     name: 'keyword.operator.assignment.beancount'
   }, {
+    # Beancount supports a default cost assignment of '{}',
+    # which will average across all lots, or whatever 'option' you selected.
+    comment: 'cost assignment: default strategy'
+    match: '\\{\\}'
+    name: 'keyword.operator.assignment.beancount'
+  }, {
+    # Add support for an extended cost assignment.
+    # This only supports the initial parts of '{# 240.00 USD, 2020-02-02, "lot name"}';
+    # the detailed lot dates/names aren't highlighted at all.
+    comment: 'detailed cost assignment'
+    begin: '(\\{[#]?)\\s+([\\d]+[\\.]?[\\d]*)\\s+([A-Z][A-Z0-9\\"\\.\\_\\-]{0,10}[A-Z0-9])'
+    beginCaptures:
+      '1':
+        name: 'keyword.operator.assignment.beancount'
+      '2':
+        name: 'constant.numeric.currency.beancount'
+      '3':
+        name: 'variable.other.currency.beancount'
+    end: '(\\})'
+    endCaptures:
+      '1':
+        name: 'keyword.operator.assignment.beancount'
+    patterns: [
+      {
+        match: '\\/'
+        name: 'keyword.operator.assignment.beancount'
+      }
+    ]
+  }, {
+    comment: 'fallback cost assignment (lacks highlighting within braces)'
     begin: '(\\{)'
     beginCaptures:
       '1':
         name: 'keyword.operator.assignment.beancount'
-    comment: 'cost assignment'
     end: '(\\})'
     endCaptures:
       '1':
